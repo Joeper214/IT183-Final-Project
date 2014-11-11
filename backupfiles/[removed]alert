@@ -1,0 +1,80 @@
+-- MySQL dump 10.13  Distrib 5.5.36, for Linux (x86_64)
+--
+-- Host: localhost    Database: backup_db
+-- ------------------------------------------------------
+-- Server version	5.5.36
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `backup_databases`
+--
+
+DROP TABLE IF EXISTS `backup_databases`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `backup_databases` (
+  `db_id` int(11) NOT NULL AUTO_INCREMENT,
+  `db_name` varchar(25) NOT NULL,
+  `date_restored` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `runtime` varchar(10) NOT NULL,
+  `db_type` tinyint(2) NOT NULL,
+  PRIMARY KEY (`db_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `backup_databases`
+--
+
+LOCK TABLES `backup_databases` WRITE;
+/*!40000 ALTER TABLE `backup_databases` DISABLE KEYS */;
+/*!40000 ALTER TABLE `backup_databases` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `backup_files`
+--
+
+DROP TABLE IF EXISTS `backup_files`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `backup_files` (
+  `backup_id` int(11) NOT NULL AUTO_INCREMENT,
+  `file` varchar(45) NOT NULL,
+  `db_name` varchar(45) NOT NULL,
+  `backup_type` varchar(10) NOT NULL,
+  `tb_name` varchar(15) DEFAULT NULL,
+  PRIMARY KEY (`backup_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `backup_files`
+--
+
+LOCK TABLES `backup_files` WRITE;
+/*!40000 ALTER TABLE `backup_files` DISABLE KEYS */;
+INSERT INTO `backup_files` VALUES (59,'sales_bk.sql','salesdb','Database',NULL),(60,'MocoBack.sql','moco','Database',NULL),(61,'[removed]alert&#40;\'bleeh!\'&#41;[removed].sql','backup_db','Database',NULL);
+/*!40000 ALTER TABLE `backup_files` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2014-09-04 15:25:06
